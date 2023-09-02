@@ -1,66 +1,52 @@
-import { motion } from "framer-motion";
+/* eslint-disable react/no-unknown-property */
 import {
   Environment,
   OrbitControls,
-  PerspectiveCamera,
+  Scroll,
+  ScrollControls,
+  Sky,
 } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-// import RotatingBox from "./Objects/RotatingBox";
-import { Model } from "./Objects/Ovni";
-import { Suspense } from "react";
-import bg from "/assets/bg.hdr?url";
-import {
-  Bloom,
-  ChromaticAberration,
-  EffectComposer,
-} from "@react-three/postprocessing";
-import { BlendFunction } from "postprocessing";
-import { Words } from "./Objects/Words";
-import { Link } from "react-router-dom";
+import { Avatar } from "./Objects/Avatar";
+import Interface from "./components/Interface";
+import { useState } from "react";
+import ScrollManager from "./components/ScrollManager";
+import Menu from "./components/Menu";
 
-export default function App() {
+const App = () => {
+  const [section, setSection] = useState(0);
+  const [menuOpened, setMenuOpened] = useState(false);
   return (
-    <motion.div
-      initial={{ opacity: 0, x: 20 }}
-      animate={{ opacity: 1, x: 0, transition: { delay: 0.2 } }}
-      exit={{ opacity: 0 }}
-      className="h-screen"
-    >
-      <Link to={"/home"}>
-        <Canvas shadowmap="true" camera={{ position: [0, 0, 8] }}>
-          <Suspense fallback={null}>
-            <Environment files={bg} background={true} />
-            <PerspectiveCamera makeDefault fov={60} position={[0, 3, 15]} />
+    <>
+      <Canvas shadows camera={{ position: [0, 2, 5], fov: 30 }}>
+        <color attach="background" args={["#ececec"]} />
+        <ScrollControls pages={4} damping={0.1}>
+          <ScrollManager section={section} onSectionChange={setSection} />
+          <Scroll html>
+            <Interface />
+          </Scroll>
 
-            <ambientLight intensity={0.1} />
-            <pointLight position={[10, 10, 30]} intensity={1} />
+          <OrbitControls
+            enablePan={false}
+            enableRotate={true}
+            enableZoom={false}
+          />
+          <Sky />
+          <Environment preset="sunset" />
 
-            <Model />
-            <Words />
-
-            <OrbitControls
-              enablePan={false}
-              enableRotate={true}
-              enableZoom={false}
-            />
-            <EffectComposer>
-              <Bloom
-                blendFunction={BlendFunction.ADD}
-                intensity={1.3}
-                width={300}
-                height={300}
-                kernelSize={5}
-                luminanceThreshold={0.45}
-                luminanceSmoothing={0.025}
-              />
-              <ChromaticAberration
-                blendFunction={BlendFunction.NORMAL}
-                offset={[0.0005, 0.0012]}
-              />
-            </EffectComposer>
-          </Suspense>
-        </Canvas>
-      </Link>
-    </motion.div>
+          <group position-y={-1}>
+            <Avatar />
+          </group>
+          <ambientLight intensity={2} />
+        </ScrollControls>
+      </Canvas>
+      <Menu
+        onSectionChange={setSection}
+        menuOpened={menuOpened}
+        setMenuOpened={setMenuOpened}
+      />
+    </>
   );
-}
+};
+
+export default App;
