@@ -9,13 +9,17 @@ import {
 import { Canvas } from "@react-three/fiber";
 import { Avatar } from "./Objects/Avatar";
 import Interface from "./components/Interface";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ScrollManager from "./components/ScrollManager";
 import Menu from "./components/Menu";
 
 const App = () => {
   const [section, setSection] = useState(0);
   const [menuOpened, setMenuOpened] = useState(false);
+  useEffect(() => {
+    setMenuOpened(false);
+  }, [section]);
+
   return (
     <>
       <Canvas shadows camera={{ position: [0, 2, 5], fov: 30 }}>

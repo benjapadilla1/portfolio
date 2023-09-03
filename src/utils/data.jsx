@@ -75,6 +75,11 @@ export const languages = [
     flag: "🇺🇸",
   },
   {
+    name: "Spanish",
+    proficiency: "Fluent (C2)",
+    flag: "sp",
+  },
+  {
     name: "German",
     proficiency: "Proficient (C1)",
     flag: "🇩🇪",
@@ -91,5 +96,22 @@ export const links = [
     title: "linkedin",
     url: "https://linkedin.com/in/benja-padilla/",
     icon: <FaLinkedin />,
+  },
+];
+
+export const proyects = [
+  {
+    title: "Doggy World",
+    image: "",
+    description: "",
+    url: "",
+    repository: " ",
+  },
+  {
+    title: "Pig Commander",
+    image: "",
+    description: "",
+    url: "https://pig-commander-client-beta.vercel.app/",
+    repository: "",
   },
 ];
