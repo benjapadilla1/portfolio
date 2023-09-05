@@ -1,3 +1,6 @@
+import { socials } from "../utils/data";
+import { motion } from "framer-motion";
+
 const Menu = ({ onSectionChange, menuOpened, setMenuOpened }) => {
   return (
     <>
@@ -31,6 +34,40 @@ const Menu = ({ onSectionChange, menuOpened, setMenuOpened }) => {
           <MenuButton label="Skills" onClick={() => onSectionChange(1)} />
           <MenuButton label="Proyects" onClick={() => onSectionChange(2)} />
           <MenuButton label="Contact" onClick={() => onSectionChange(3)} />
+        </div>
+        <div className="flex justify-center gap-6 mb-4">
+          {socials.map((social, i) => (
+            <div key={i}>
+              <motion.a
+                href={social.url}
+                target="_blank"
+                rel="noreferrer"
+                whileHover={{ scale: 1.2 }}
+              >
+                <motion.span
+                  className="text-5xl hover:text-blue-500 hover:drop-shadow-lg cursor-pointer"
+                  title={social.title}
+                  initial={{
+                    opacity: 0,
+                  }}
+                  variants={{
+                    visible: {
+                      opacity: 1,
+                      transition: {
+                        duration: 1,
+                        delay: 0.5 + i * 0.2,
+                      },
+                    },
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                  }}
+                >
+                  {social.icon}
+                </motion.span>
+              </motion.a>
+            </div>
+          ))}
         </div>
       </div>
     </>

@@ -1,47 +1,37 @@
 /* eslint-disable react/no-unknown-property */
-import {
-  Environment,
-  OrbitControls,
-  Scroll,
-  ScrollControls,
-  Sky,
-} from "@react-three/drei";
+import { Scroll, ScrollControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { Avatar } from "./Objects/Avatar";
 import Interface from "./components/Interface";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import ScrollManager from "./components/ScrollManager";
 import Menu from "./components/Menu";
+import Scene from "./components/Scene";
+import Loader from "./components/Loader";
+import { Leva } from "leva";
 
 const App = () => {
   const [section, setSection] = useState(0);
+  const [started, setStarted] = useState(false);
   const [menuOpened, setMenuOpened] = useState(false);
+
   useEffect(() => {
     setMenuOpened(false);
   }, [section]);
 
   return (
     <>
+      <Loader started={started} onStarted={setStarted} />
       <Canvas shadows camera={{ position: [0, 2, 5], fov: 30 }}>
         <color attach="background" args={["#ececec"]} />
+
         <ScrollControls pages={4} damping={0.1}>
           <ScrollManager section={section} onSectionChange={setSection} />
           <Scroll html>
-            <Interface />
+            {started && <Interface setSection={setSection} />}
           </Scroll>
-
-          <OrbitControls
-            enablePan={false}
-            enableRotate={true}
-            enableZoom={false}
-          />
-          <Sky />
-          <Environment preset="sunset" />
-
-          <group position-y={-1}>
-            <Avatar />
-          </group>
-          <ambientLight intensity={2} />
+          <Suspense>
+            <Scene section={section} />
+          </Suspense>
         </ScrollControls>
       </Canvas>
       <Menu
@@ -49,6 +39,7 @@ const App = () => {
         menuOpened={menuOpened}
         setMenuOpened={setMenuOpened}
       />
+      <Leva hidden />
     </>
   );
 };

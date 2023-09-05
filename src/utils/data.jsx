@@ -13,6 +13,11 @@ import {
   SiGit,
   SiPostgresql,
   SiTypescript,
+  SiSequelize,
+  SiNextdotjs,
+  SiTailwindcss,
+  SiThreedotjs,
+  SiGmail,
 } from "react-icons/si";
 
 export const skills = [
@@ -27,6 +32,16 @@ export const skills = [
     logo: <FaCss3 />,
   },
   {
+    technology: "Tailwind CSS",
+    link: "https://tailwindcss.com/",
+    logo: <SiTailwindcss />,
+  },
+  {
+    technology: "Git",
+    link: "https://git-scm.com/",
+    logo: <SiGit />,
+  },
+  {
     technology: "JavaScript",
     link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
     logo: <FaJs />,
@@ -37,9 +52,19 @@ export const skills = [
     logo: <SiTypescript />,
   },
   {
+    technology: "Three JS",
+    link: "https://threejs.org/",
+    logo: <SiThreedotjs />,
+  },
+  {
     technology: "React",
     link: "https://reactjs.org/",
     logo: <FaReact />,
+  },
+  {
+    technology: "Next JS",
+    link: "https://nextjs.org/",
+    logo: <SiNextdotjs />,
   },
   {
     technology: "Redux",
@@ -62,9 +87,9 @@ export const skills = [
     logo: <SiPostgresql />,
   },
   {
-    technology: "Git",
-    link: "https://git-scm.com/",
-    logo: <SiGit />,
+    technology: "Sequelize",
+    link: "https://sequelize.org/",
+    logo: <SiSequelize />,
   },
 ];
 
@@ -86,7 +111,7 @@ export const languages = [
   },
 ];
 
-export const links = [
+export const socials = [
   {
     title: "github",
     url: "https://github.com/benjapadilla1",
@@ -97,20 +122,39 @@ export const links = [
     url: "https://linkedin.com/in/benja-padilla/",
     icon: <FaLinkedin />,
   },
+  {
+    title: "Mail",
+    url: "mailto:benja.padilla@outlook.com.ar",
+    icon: <SiGmail />,
+  },
 ];
 
-export const proyects = [
+export const projects = [
   {
     title: "Doggy World",
-    image: "",
-    description: "",
-    url: "",
-    repository: " ",
+    image: "projects/trace.svg",
+    description: "LoremPI",
+    url: "https://github.com/",
+    repository: "https://github.com/benjapadilla1/PI-Dogs.git",
   },
   {
     title: "Pig Commander",
-    image: "",
-    description: "",
+    image: "projects/pigCommander.png",
+    description: "LoremPF",
+    url: "https://pig-commander-client-beta.vercel.app/",
+    repository: "https://github.com/RodrigoSpano/pig_commander_client.git",
+  },
+  {
+    title: "Doggy World",
+    image: "projects/trace.svg",
+    description: "LoremPI",
+    url: "https://github.com/",
+    repository: "",
+  },
+  {
+    title: "Pig Commander",
+    image: "projects/pigCommander.png",
+    description: "LoremPF",
     url: "https://pig-commander-client-beta.vercel.app/",
     repository: "",
   },

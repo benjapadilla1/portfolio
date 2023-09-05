@@ -1,6 +1,9 @@
+/* eslint-disable react/prop-types */
 import { motion } from "framer-motion";
-import { languages, skills } from "../utils/data";
+import { languages, projects, skills } from "../utils/data";
 import { ValidationError, useForm } from "@formspree/react";
+import Projects, { currentProjectAtom } from "./Projects";
+import { useAtom } from "jotai";
 
 export const Section = (props) => {
   const { children } = props;
@@ -24,20 +27,18 @@ export const Section = (props) => {
   );
 };
 
-const Interface = () => {
+const Interface = ({ setSection }) => {
   return (
     <div className="flex flex-col items-center w-screen">
-      <AboutSection />
+      <AboutSection setSection={setSection} />
       <SkillsSection />
-      <Section>
-        <h1>Proyects</h1>
-      </Section>
+      <ProyectSection />
       <ContactSection />
     </div>
   );
 };
 
-const AboutSection = () => {
+const AboutSection = ({ setSection }) => {
   return (
     <Section>
       <h1 className="text-6xl font-extrabold leading-snug ">
@@ -83,6 +84,7 @@ const AboutSection = () => {
       </h1>
       <motion.button
         className="bg-indigo-600 text-white  py-4 px-8 rounded-lg font-bold text-lg mt-16"
+        onClick={() => setSection(3)}
         initial={{
           opacity: 0,
           y: 25,
@@ -183,13 +185,43 @@ const SkillsSection = () => {
   );
 };
 
+const ProyectSection = () => {
+  const [currentProject, setCurrentProject] = useAtom(currentProjectAtom);
+  const prevProyect = () => {
+    setCurrentProject((currentProject - 1 + projects.length) % projects.length);
+  };
+  const nextProyect = () => {
+    setCurrentProject((currentProject + 1) % projects.length);
+  };
+
+  return (
+    <Section>
+      <div className="flex w-full h-full gap-8 items-center justify-center">
+        <button
+          className="hover:text-indigo-600 transition-colors"
+          onClick={prevProyect}
+        >
+          Previous
+        </button>
+        <h2 className="text-5xl font-bold">Projects</h2>
+        <button
+          className="hover:text-indigo-600 transition-colors"
+          onClick={nextProyect}
+        >
+          Next
+        </button>
+      </div>
+    </Section>
+  );
+};
+
 const ContactSection = () => {
   const [state, handleSubmit] = useForm("xeqbkgnd");
   return (
     <Section>
       <h2 className="text-5xl font-bold">Contact me</h2>
       <div
-        className="mt-8 p-8 rounded-md bg-white max-w-full"
+        className="mt-8 p-8 rounded-md bg-opacity-25 bg-black max-w-full  "
         style={{ width: "500px" }}
       >
         {state.succeeded ? (
