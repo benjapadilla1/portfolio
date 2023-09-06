@@ -1,11 +1,5 @@
 /* eslint-disable react/no-unknown-property */
-import {
-  ContactShadows,
-  Environment,
-  OrbitControls,
-  Sky,
-  useScroll,
-} from "@react-three/drei";
+import { ContactShadows, useScroll } from "@react-three/drei";
 import { Avatar } from "../Objects/Avatar";
 import { useFrame } from "@react-three/fiber";
 import { useState } from "react";
@@ -20,6 +14,7 @@ const Scene = () => {
     const curSection = Math.floor(data.scroll.current * data.pages);
     if (curSection !== section) setSection(curSection);
   });
+
   return (
     <>
       {/* <OrbitControls enablePan={false} enableRotate={true} enableZoom={false} /> */}

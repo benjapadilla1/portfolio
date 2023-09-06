@@ -14,6 +14,7 @@ const Project = (props) => {
   const { project, highlighted } = props;
   const bg = useRef();
   const bgOpacity = useMotionValue(0.4);
+
   useEffect(() => {
     animate(bgOpacity, highlighted ? 0.7 : 0.4);
   }, [highlighted]);
@@ -76,8 +77,14 @@ export const currentProjectAtom = atom(Math.floor(projects.length / 2));
 const Projects = () => {
   const { viewport } = useThree();
   const [currentProject] = useAtom(currentProjectAtom);
+  const isMobile = window.innerWidth < 768;
+
   return (
-    <group position-y={-viewport.height * 2 + 5.5}>
+    <group
+      position-y={
+        isMobile ? -viewport.height * 1.85 + 5.5 : -viewport.height * 2 + 5.5
+      }
+    >
       {projects.map((project, i) => (
         <motion.group
           key={"project" + i}

@@ -101,7 +101,7 @@ export const languages = [
   },
   {
     name: "Spanish",
-    proficiency: "Fluent (C2)",
+    proficiency: "Native",
     flag: "sp",
   },
   {
@@ -130,18 +130,33 @@ export const socials = [
 ];
 
 export const projects = [
-  {
-    title: "Recalled Minds",
-    image: "projects/trace.svg",
-    description: "Game of memory",
-    url: "https://github.com/",
-    repository: "https://github.com/benjapadilla1/PI-Dogs.git",
-  },
+  // {
+  //   title: "Recalled Minds",
+  //   image: "",
+  //   description: "Game of memory",
+  //   url: "https://github.com/",
+  //   repository: "https://github.com/benjapadilla1/PI-Dogs.git",
+  // },
+  // {
+  //   title: "Hangman Game",
+  //   image: "",
+  //   description: "Typical hangman game",
+  //   url: "https://github.com/",
+  //   repository: "https://github.com/benjapadilla1/PI-Dogs.git",
+  // },
+  // {
+  //   title: "Git Profile",
+  //   image: "",
+  //   description:
+  //     "Web app that fetches and displays a user's GitHub profile and repositories.",
+  //   url: "https://github.com/",
+  //   repository: "https://github.com/benjapadilla1/PI-Dogs.git",
+  // },
   {
     title: "Doggy World",
     image: "projects/trace.svg",
     description: "App to see the total dogs",
-    url: "https://github.com/",
+    url: "https://github.com/benjapadilla1/PI-Dogs.git",
     repository: "https://github.com/benjapadilla1/PI-Dogs.git",
   },
   {

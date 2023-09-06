@@ -4,6 +4,7 @@ import { languages, projects, skills } from "../utils/data";
 import { ValidationError, useForm } from "@formspree/react";
 import Projects, { currentProjectAtom } from "./Projects";
 import { useAtom } from "jotai";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 export const Section = (props) => {
   const { children, mobileTop } = props;
@@ -43,49 +44,49 @@ const Interface = ({ setSection }) => {
 const AboutSection = ({ setSection }) => {
   return (
     <Section mobileTop>
-      <h1 className="text-4xl md:text-6xl font-extrabold leading-snug mt-2 md:mt-0">
-        Hi I am
-        <div />
-        <span className="bg-blue-200 px-1 italic">Benjamin Padilla</span>
-        <div />
-        <motion.span
-          className="px-1"
-          initial={{
-            opacity: 0,
-            y: 25,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          transition={{
-            duration: 1,
-            delay: 1,
-          }}
-        >
-          Full Stack
-        </motion.span>
-        <div />
-        <motion.span
-          className="px-1"
-          initial={{
-            opacity: 0,
-            y: 25,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          transition={{
-            duration: 1,
-            delay: 1.1,
-          }}
-        >
-          Web developer
-        </motion.span>
-      </h1>
+      <div className="text-4xl md:text-6xl font-extrabold  mt-2 md:mt-0">
+        <h1 className="mb-2 md:mb-4">Hi I am</h1>
+        <span className="bg-blue-200 italic leading-10 md:leading-snug ">
+          Benjamín Padilla
+        </span>
+      </div>
+      <motion.span
+        className="px-1 text-4xl mt-1 md:mt-5 font-bold"
+        initial={{
+          opacity: 0,
+          y: 25,
+        }}
+        whileInView={{
+          opacity: 1,
+          y: 0,
+        }}
+        transition={{
+          duration: 1,
+          delay: 1,
+        }}
+      >
+        Full Stack
+      </motion.span>
+      <div />
+      <motion.span
+        className="px-1 text-4xl font-bold"
+        initial={{
+          opacity: 0,
+          y: 25,
+        }}
+        whileInView={{
+          opacity: 1,
+          y: 0,
+        }}
+        transition={{
+          duration: 1,
+          delay: 1.1,
+        }}
+      >
+        Web developer
+      </motion.span>
       <motion.button
-        className="bg-indigo-600 text-white  py-4 px-8 rounded-lg font-bold text-lg  mt-4 md:mt-16"
+        className="bg-indigo-600 text-white py-4 px-8 rounded-lg font-bold text-lg mt-2 md:mt-14"
         onClick={() => setSection(3)}
         initial={{
           opacity: 0,
@@ -198,6 +199,7 @@ const ProyectSection = () => {
 
   return (
     <Section>
+      <h2 className="text-3xl md:text-5xl font-bold text-center">Projects</h2>
       <motion.div
         className="flex w-full h-full gap-8 items-end justify-center"
         initial={{
@@ -213,17 +215,16 @@ const ProyectSection = () => {
         }}
       >
         <button
-          className="hover:text-indigo-600 transition-colors"
+          className="hover:text-indigo-600 text-3xl md:text-4xl transition-colors"
           onClick={prevProyect}
         >
-          Previous
+          <FaArrowLeft />
         </button>
-        <h2 className="text-3xl md:text-5xl font-bold">Projects</h2>
         <button
-          className="hover:text-indigo-600 transition-colors"
+          className="hover:text-indigo-600 text-3xl md:text-4xl transition-colors"
           onClick={nextProyect}
         >
-          Next
+          <FaArrowRight />
         </button>
       </motion.div>
     </Section>

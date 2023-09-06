@@ -13,11 +13,16 @@ import { gsap } from "gsap";
 export function Avatar(props) {
   const { animation } = props;
   const group = useRef();
+
+  const isMobile = window.innerWidth < 768;
+
   let { cursorFollow } = useControls({
     cursorFollow: false,
   });
 
-  if (animation === "Standing") cursorFollow = true;
+  if (animation === "Standing") {
+    cursorFollow = true;
+  }
 
   const { nodes, materials } = useGLTF("/models/64f0a45b81fe5bc74979a840.glb");
 
@@ -44,33 +49,67 @@ export function Avatar(props) {
     group
   );
 
-  const handleRotation = (targetY, targetX) => {
+  const handleRotation = (targetY, targetX, time) => {
     gsap.to(group.current.rotation, {
       y: targetY,
-      duration: 1,
+      duration: time,
     });
     gsap.to(group.current.position, {
       x: targetX,
-      duration: 1,
+      duration: time,
     });
+    if (targetY === -0.2) {
+      gsap.to(group.current.position, {
+        y: targetY,
+        duration: time,
+      });
+    } else {
+      gsap.to(group.current.position, {
+        y: 0,
+        duration: time,
+      });
+    }
   };
 
   useEffect(() => {
     actions[animation].reset().fadeIn(1).play();
 
-    const targetRotation =
-      animation === "Nod" || animation === "Standing"
-        ? -Math.PI / 4
-        : animation === "Sitting"
-        ? Math.PI / 0.82
-        : 0;
+    let targetRotation;
+    if (isMobile) {
+      targetRotation =
+        animation === "Nod" || animation === "Standing"
+          ? -Math.PI / 7
+          : animation === "Sitting"
+          ? -Math.PI
+          : -0.2;
+    } else {
+      targetRotation =
+        animation === "Nod" || animation === "Standing"
+          ? -Math.PI / 4
+          : animation === "Sitting"
+          ? Math.PI / 0.82
+          : 0;
+    }
 
-    handleRotation(targetRotation, animation === "Sitting" ? 1 : 0);
+    handleRotation(
+      targetRotation,
+      isMobile
+        ? animation === "Sitting"
+          ? 0
+          : animation === "Wave"
+          ? 0.3
+          : 0
+        : animation === "Sitting"
+        ? 1
+        : 0,
+
+      isMobile ? 0.5 : 1
+    );
 
     return () => {
       actions[animation].reset().fadeOut(1);
     };
-  }, [animation]);
+  }, [animation, isMobile]);
 
   useFrame((state) => {
     if (cursorFollow) {
