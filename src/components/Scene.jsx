@@ -3,7 +3,7 @@ import { ContactShadows, useScroll } from "@react-three/drei";
 import { Avatar } from "../Objects/Avatar";
 import { useFrame } from "@react-three/fiber";
 import { useState } from "react";
-import BgAnimations from "./bgAnimations";
+import BgAnimations from "./BgAnimations";
 import Projects from "./Projects";
 import BgColor from "./BgColor";
 
