@@ -14,7 +14,7 @@ export function Avatar(props) {
   const { animation } = props;
   const group = useRef();
 
-  const isMobile = window.innerWidth < 768;
+  const isMobile = window.innerWidth < 840;
 
   let { cursorFollow } = useControls({
     cursorFollow: false,

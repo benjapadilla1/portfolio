@@ -97,17 +97,14 @@ export const languages = [
   {
     name: "English",
     proficiency: "Fluent (C2)",
-    flag: "🇺🇸",
   },
   {
     name: "Spanish",
     proficiency: "Native",
-    flag: "sp",
   },
   {
     name: "German",
     proficiency: "Proficient (C1)",
-    flag: "🇩🇪",
   },
 ];
 

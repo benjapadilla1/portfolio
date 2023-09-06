@@ -146,7 +146,6 @@ const SkillsSection = () => {
           <div className="mt-8 space-y-4">
             {languages.map((leng, i) => (
               <div className="w-64" key={i}>
-                <span>{leng.flag}</span>
                 <motion.h3
                   className="text-xl font-bold text-gray-800"
                   initial={{
