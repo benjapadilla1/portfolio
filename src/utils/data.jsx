@@ -131,31 +131,24 @@ export const socials = [
 
 export const projects = [
   {
+    title: "Recalled Minds",
+    image: "projects/trace.svg",
+    description: "Game of memory",
+    url: "https://github.com/",
+    repository: "https://github.com/benjapadilla1/PI-Dogs.git",
+  },
+  {
     title: "Doggy World",
     image: "projects/trace.svg",
-    description: "LoremPI",
+    description: "App to see the total dogs",
     url: "https://github.com/",
     repository: "https://github.com/benjapadilla1/PI-Dogs.git",
   },
   {
     title: "Pig Commander",
     image: "projects/pigCommander.png",
-    description: "LoremPF",
+    description: "Financial app to have record of expenses and incomes",
     url: "https://pig-commander-client-beta.vercel.app/",
     repository: "https://github.com/RodrigoSpano/pig_commander_client.git",
-  },
-  {
-    title: "Doggy World",
-    image: "projects/trace.svg",
-    description: "LoremPI",
-    url: "https://github.com/",
-    repository: "",
-  },
-  {
-    title: "Pig Commander",
-    image: "projects/pigCommander.png",
-    description: "LoremPF",
-    url: "https://pig-commander-client-beta.vercel.app/",
-    repository: "",
   },
 ];

@@ -6,10 +6,12 @@ import Projects, { currentProjectAtom } from "./Projects";
 import { useAtom } from "jotai";
 
 export const Section = (props) => {
-  const { children } = props;
+  const { children, mobileTop } = props;
   return (
     <motion.section
-      className="h-screen w-screen p-8 max-w-screen-2xl mx-auto flex flex-col items-start justify-center"
+      className={`h-screen w-screen p-8 max-w-screen-2xl mx-auto flex flex-col items-start ${
+        mobileTop ? "justify-start md:justify-center" : "justify-center"
+      }`}
       initial={{
         opacity: 0,
         y: 50,
@@ -40,8 +42,8 @@ const Interface = ({ setSection }) => {
 
 const AboutSection = ({ setSection }) => {
   return (
-    <Section>
-      <h1 className="text-6xl font-extrabold leading-snug ">
+    <Section mobileTop>
+      <h1 className="text-4xl md:text-6xl font-extrabold leading-snug mt-2 md:mt-0">
         Hi I am
         <div />
         <span className="bg-blue-200 px-1 italic">Benjamin Padilla</span>
@@ -83,7 +85,7 @@ const AboutSection = ({ setSection }) => {
         </motion.span>
       </h1>
       <motion.button
-        className="bg-indigo-600 text-white  py-4 px-8 rounded-lg font-bold text-lg mt-16"
+        className="bg-indigo-600 text-white  py-4 px-8 rounded-lg font-bold text-lg  mt-4 md:mt-16"
         onClick={() => setSection(3)}
         initial={{
           opacity: 0,
@@ -108,13 +110,13 @@ const SkillsSection = () => {
   return (
     <Section>
       <motion.div whileInView={"visible"}>
-        <h2 className="text-5xl font-bold">Skills</h2>
+        <h2 className="text-3xl md:text-5xl font-bold">Skills</h2>
         <div className="mt-8 space-y-4 grid grid-cols-3 items-center justify-center ">
           {skills.map((skill, i) => (
             <div className="w-36" key={i}>
               <a href={skill.link} target="_blank" rel="noreferrer">
                 <motion.span
-                  className="text-5xl hover:text-blue-500 cursor-pointer"
+                  className="text-3xl md:text-5xl hover:text-blue-500 cursor-pointer"
                   title={skill.technology}
                   initial={{
                     opacity: 0,
@@ -139,7 +141,7 @@ const SkillsSection = () => {
           ))}
         </div>
         <motion.div whileInView={"visible"}>
-          <h2 className="text-5xl font-bold mt-10">Languages</h2>
+          <h2 className="text-3xl md:text-5xl font-bold mt-10">Languages</h2>
           <div className="mt-8 space-y-4">
             {languages.map((leng, i) => (
               <div className="w-64" key={i}>
@@ -196,21 +198,34 @@ const ProyectSection = () => {
 
   return (
     <Section>
-      <div className="flex w-full h-full gap-8 items-center justify-center">
+      <motion.div
+        className="flex w-full h-full gap-8 items-end justify-center"
+        initial={{
+          opacity: 0,
+          x: 50,
+        }}
+        whileInView={{
+          opacity: 1,
+          x: 0,
+          transition: {
+            duration: 1,
+          },
+        }}
+      >
         <button
           className="hover:text-indigo-600 transition-colors"
           onClick={prevProyect}
         >
           Previous
         </button>
-        <h2 className="text-5xl font-bold">Projects</h2>
+        <h2 className="text-3xl md:text-5xl font-bold">Projects</h2>
         <button
           className="hover:text-indigo-600 transition-colors"
           onClick={nextProyect}
         >
           Next
         </button>
-      </div>
+      </motion.div>
     </Section>
   );
 };
@@ -219,7 +234,7 @@ const ContactSection = () => {
   const [state, handleSubmit] = useForm("xeqbkgnd");
   return (
     <Section>
-      <h2 className="text-5xl font-bold">Contact me</h2>
+      <h2 className="text-3xl md:text-5xl font-bold">Contact me</h2>
       <div
         className="mt-8 p-8 rounded-md bg-opacity-25 bg-black max-w-full  "
         style={{ width: "500px" }}

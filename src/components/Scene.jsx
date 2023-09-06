@@ -3,7 +3,6 @@ import {
   ContactShadows,
   Environment,
   OrbitControls,
-  Scroll,
   Sky,
   useScroll,
 } from "@react-three/drei";
@@ -12,6 +11,7 @@ import { useFrame } from "@react-three/fiber";
 import { useState } from "react";
 import BgAnimations from "./bgAnimations";
 import Projects from "./Projects";
+import BgColor from "./BgColor";
 
 const Scene = () => {
   const data = useScroll();
@@ -22,9 +22,10 @@ const Scene = () => {
   });
   return (
     <>
-      <OrbitControls enablePan={false} enableRotate={true} enableZoom={false} />
-      <Sky />
-      <Environment preset="sunset" />
+      {/* <OrbitControls enablePan={false} enableRotate={true} enableZoom={false} /> */}
+      {/* <Sky /> */}
+      <BgColor />
+      {/* <Environment preset="sunset" /> */}
       <BgAnimations />
       <group position-y={-Math.PI / 3}>
         <ContactShadows
@@ -42,8 +43,8 @@ const Scene = () => {
               : section === 1
               ? "Nod"
               : section === 2
-              ? "Standing"
-              : "Phone Call"
+              ? "Sitting"
+              : "Standing"
           }
         />
         <directionalLight position={[-5, 3, 5]} intensity={0.4} />

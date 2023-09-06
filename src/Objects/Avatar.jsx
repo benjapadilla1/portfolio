@@ -9,6 +9,7 @@ import { useAnimations, useFBX, useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useControls } from "leva";
 import * as THREE from "three";
+import { gsap } from "gsap";
 export function Avatar(props) {
   const { animation } = props;
   const group = useRef();
@@ -24,11 +25,13 @@ export function Avatar(props) {
   const { animations: nodAnimation } = useFBX("/animations/Nod.fbx");
   const { animations: standingAnimation } = useFBX("/animations/standing.fbx");
   const { animations: phoneAnimation } = useFBX("/animations/Phone.fbx");
+  const { animations: sittingAnimation } = useFBX("/animations/Sitting.fbx");
 
   waveAnimation[0].name = "Wave";
   nodAnimation[0].name = "Nod";
   standingAnimation[0].name = "Standing";
   phoneAnimation[0].name = "Phone Call";
+  sittingAnimation[0].name = "Sitting";
 
   const { actions } = useAnimations(
     [
@@ -36,16 +39,39 @@ export function Avatar(props) {
       nodAnimation[0],
       standingAnimation[0],
       phoneAnimation[0],
+      sittingAnimation[0],
     ],
     group
   );
 
+  const handleRotation = (targetY, targetX) => {
+    gsap.to(group.current.rotation, {
+      y: targetY,
+      duration: 1,
+    });
+    gsap.to(group.current.position, {
+      x: targetX,
+      duration: 1,
+    });
+  };
+
   useEffect(() => {
     actions[animation].reset().fadeIn(1).play();
+
+    const targetRotation =
+      animation === "Nod" || animation === "Standing"
+        ? -Math.PI / 4
+        : animation === "Sitting"
+        ? Math.PI / 0.82
+        : 0;
+
+    handleRotation(targetRotation, animation === "Sitting" ? 1 : 0);
+
     return () => {
       actions[animation].reset().fadeOut(1);
     };
   }, [animation]);
+
   useFrame((state) => {
     if (cursorFollow) {
       const target = new THREE.Vector3(state.mouse.x, state.mouse.y, 1);
@@ -125,3 +151,4 @@ useFBX.preload("/animations/Nod.fbx");
 useFBX.preload("/animations/Phone.fbx");
 useFBX.preload("/animations/standing.fbx");
 useFBX.preload("/animations/wave.fbx");
+useFBX.preload("/animations/Sitting.fbx");

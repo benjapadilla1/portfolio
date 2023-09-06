@@ -21,7 +21,7 @@ const App = () => {
   return (
     <>
       <Loader started={started} onStarted={setStarted} />
-      <Canvas shadows camera={{ position: [0, 2, 5], fov: 30 }}>
+      <Canvas shadows camera={{ position: [0, 0, 5], fov: 30 }}>
         <color attach="background" args={["#ececec"]} />
 
         <ScrollControls pages={4} damping={0.1}>

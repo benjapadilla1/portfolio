@@ -7,7 +7,6 @@ import { motion } from "framer-motion-3d";
 import { Image, Text } from "@react-three/drei";
 import { atom, useAtom } from "jotai";
 import { useEffect, useRef } from "react";
-// import * as THREE from "three";
 import github from "/assets/github.svg";
 import web from "/assets/web.svg";
 
@@ -27,13 +26,14 @@ const Project = (props) => {
     <group {...props}>
       <mesh position-z={-0.001} ref={bg}>
         <planeGeometry args={[2, 2]} />
-        <meshBasicMaterial color="black" transparent opacity={0.7} />
+        <meshBasicMaterial color="#4d4f75" transparent opacity={0.9} />
       </mesh>
       <Image
         scale={[1.6, 1.2, 1]}
         url={project.image}
         toneMapped={false}
         position-y={0.3}
+        opacity={0.9}
       />
       <Image
         position={[0.7, 0.8, 0.001]}
@@ -46,6 +46,7 @@ const Project = (props) => {
         position={[-0.69, 0.8, 0.001]}
         scale={[0.2, 0.2, 1]}
         onClick={() => window.open(project.url, "_blank")}
+        className="cursor-pointer"
         style={{ cursor: "pointer" }}
         url={web}
       />
@@ -59,7 +60,7 @@ const Project = (props) => {
         {project.title.toUpperCase()}
       </Text>
       <Text
-        maxWidth={2}
+        maxWidth={1.8}
         anchorX={"left"}
         anchorY={"top"}
         fontSize={0.1}
@@ -67,18 +68,6 @@ const Project = (props) => {
       >
         {project.description}
       </Text>
-      {/* <primitive
-        object={
-          new THREE.Mesh(
-            new THREE.PlaneGeometry(2, 1.2),
-            new THREE.MeshBasicMaterial({
-              map: new THREE.TextureLoader().load(""),
-            })
-          )
-        }
-        scale={[2, 1.2, 1]}
-        position-y={0.3}
-      /> */}
     </group>
   );
 };
@@ -88,7 +77,7 @@ const Projects = () => {
   const { viewport } = useThree();
   const [currentProject] = useAtom(currentProjectAtom);
   return (
-    <group position-y={-viewport.height * 2 + 6}>
+    <group position-y={-viewport.height * 2 + 5.5}>
       {projects.map((project, i) => (
         <motion.group
           key={"project" + i}
