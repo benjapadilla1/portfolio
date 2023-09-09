@@ -29,7 +29,7 @@ const Menu = ({ onSectionChange, menuOpened, setMenuOpened }) => {
           menuOpened ? "w-full md:w-80" : "w-0"
         }`}
       >
-        <div className="">Switch</div>
+        <div className="">Switch Languages</div>
         <div className="flex-1 flex items-start justify-center flex-col gap-6 p-8">
           <MenuButton label="About" onClick={() => onSectionChange(0)} />
           <MenuButton label="Skills" onClick={() => onSectionChange(1)} />

@@ -128,16 +128,9 @@ export const socials = [
 
 export const projects = [
   // {
-  //   title: "Recalled Minds",
+  //   title: "Game Station",
   //   image: "",
-  //   description: "Game of memory",
-  //   url: "https://github.com/",
-  //   repository: "https://github.com/benjapadilla1/PI-Dogs.git",
-  // },
-  // {
-  //   title: "Hangman Game",
-  //   image: "",
-  //   description: "Typical hangman game",
+  //   description: "A game platform that allows you to play typical games",
   //   url: "https://github.com/",
   //   repository: "https://github.com/benjapadilla1/PI-Dogs.git",
   // },
