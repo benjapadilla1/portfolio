@@ -9,9 +9,10 @@ import { atom, useAtom } from "jotai";
 import { useEffect, useRef } from "react";
 import github from "/assets/github.svg";
 import web from "/assets/web.svg";
+import { useTranslation } from "react-i18next";
 
 const Project = (props) => {
-  const { project, highlighted } = props;
+  const { project, highlighted, i } = props;
   const bg = useRef();
   const bgOpacity = useMotionValue(0.4);
 
@@ -22,7 +23,7 @@ const Project = (props) => {
   useFrame(() => {
     bg.current.material.opacity = bgOpacity.get();
   });
-
+  const { t } = useTranslation(["projects"]);
   return (
     <group {...props}>
       <mesh position-z={-0.001} ref={bg}>
@@ -67,7 +68,7 @@ const Project = (props) => {
         fontSize={0.1}
         position={[-0.8, -0.6, 0]}
       >
-        {project.description}
+        {i === 0 ? t("description1") : t("description2")}
       </Text>
     </group>
   );
@@ -100,7 +101,7 @@ const Projects = () => {
             rotateZ: currentProject === i ? 0 : -0.1 * Math.PI,
           }}
         >
-          <Project project={project} highlighted={i === currentProject} />
+          <Project project={project} highlighted={i === currentProject} i={i} />
         </motion.group>
       ))}
     </group>

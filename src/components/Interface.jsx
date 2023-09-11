@@ -2,9 +2,10 @@
 import { motion } from "framer-motion";
 import { languages, projects, skills } from "../utils/data";
 import { ValidationError, useForm } from "@formspree/react";
-import Projects, { currentProjectAtom } from "./Projects";
+import { currentProjectAtom } from "./Projects";
 import { useAtom } from "jotai";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 export const Section = (props) => {
   const { children, mobileTop } = props;
@@ -42,10 +43,11 @@ const Interface = ({ setSection }) => {
 };
 
 const AboutSection = ({ setSection }) => {
+  const { t } = useTranslation(["about"]);
   return (
     <Section mobileTop>
       <div className="text-4xl md:text-6xl font-extrabold  mt-2 md:mt-0">
-        <h1 className="mb-2 md:mb-4">Hi I am</h1>
+        <h1 className="mb-2 md:mb-4"> {t("welcome")}</h1>
         <span className="bg-blue-200 italic leading-10 md:leading-snug ">
           Benjamín Padilla
         </span>
@@ -101,17 +103,18 @@ const AboutSection = ({ setSection }) => {
           delay: 1.5,
         }}
       >
-        Contact me
+        {t("contact")}
       </motion.button>
     </Section>
   );
 };
 
 const SkillsSection = () => {
+  const { t } = useTranslation(["languages"]);
   return (
     <Section>
       <motion.div whileInView={"visible"}>
-        <h2 className="text-3xl md:text-5xl font-bold">Skills</h2>
+        <h2 className="text-3xl md:text-5xl font-bold">{t("skills")}</h2>
         <div className="mt-8 space-y-4 grid grid-cols-3 items-center justify-center ">
           {skills.map((skill, i) => (
             <div className="w-36" key={i}>
@@ -142,7 +145,9 @@ const SkillsSection = () => {
           ))}
         </div>
         <motion.div whileInView={"visible"}>
-          <h2 className="text-3xl md:text-5xl font-bold mt-10">Languages</h2>
+          <h2 className="text-3xl md:text-5xl font-bold mt-10">
+            {t("languages")}
+          </h2>
           <div className="mt-8 space-y-4">
             {languages.map((leng, i) => (
               <div className="w-64" key={i}>
@@ -188,6 +193,7 @@ const SkillsSection = () => {
 };
 
 const ProyectSection = () => {
+  const { t } = useTranslation(["projects"]);
   const [currentProject, setCurrentProject] = useAtom(currentProjectAtom);
   const prevProyect = () => {
     setCurrentProject((currentProject - 1 + projects.length) % projects.length);
@@ -198,7 +204,9 @@ const ProyectSection = () => {
 
   return (
     <Section>
-      <h2 className="text-3xl md:text-5xl font-bold text-center">Projects</h2>
+      <h2 className="text-3xl md:text-5xl font-bold text-center">
+        {t("projects")}
+      </h2>
       <motion.div
         className="flex w-full h-full gap-8 items-end justify-center"
         initial={{
@@ -232,22 +240,23 @@ const ProyectSection = () => {
 
 const ContactSection = () => {
   const [state, handleSubmit] = useForm("xeqbkgnd");
+  const { t } = useTranslation(["contact"]);
   return (
     <Section>
-      <h2 className="text-3xl md:text-5xl font-bold">Contact me</h2>
+      <h2 className="text-3xl md:text-5xl font-bold">{t("contact")}</h2>
       <div
         className="mt-8 p-8 rounded-md bg-opacity-25 bg-black max-w-full  "
         style={{ width: "500px" }}
       >
         {state.succeeded ? (
-          <p className="text-gray-900 text-center">Thanks for your message</p>
+          <p className="text-gray-900 text-center">{t("submitted")}</p>
         ) : (
           <form onSubmit={handleSubmit}>
             <label
               htmlFor="name"
               className="font-medium text-gray-900 block mb-1"
             >
-              Name
+              {t("name")}
             </label>
             <input
               type="text"
@@ -275,7 +284,7 @@ const ContactSection = () => {
               htmlFor="email"
               className="font-medium text-gray-900 block mb-1 mt-8"
             >
-              Message
+              {t("messsage")}
             </label>
             <textarea
               name="message"
@@ -290,7 +299,7 @@ const ContactSection = () => {
               className="bg-indigo-600 text-white py-4 px-8 rounded-lg font-bold text-lg mt-12"
               disabled={state.submitting}
             >
-              Submit
+              {t("submit")}
             </button>
           </form>
         )}

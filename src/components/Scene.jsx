@@ -17,10 +17,7 @@ const Scene = () => {
 
   return (
     <>
-      {/* <OrbitControls enablePan={false} enableRotate={true} enableZoom={false} /> */}
-      {/* <Sky /> */}
       <BgColor />
-      {/* <Environment preset="sunset" /> */}
       <BgAnimations />
       <group position-y={-Math.PI / 3}>
         <ContactShadows

@@ -1,7 +1,10 @@
+import { useTranslation } from "react-i18next";
+import LanguageSwitch from "../utils/LanguageSwitch";
 import { socials } from "../utils/data";
 import { motion } from "framer-motion";
 
 const Menu = ({ onSectionChange, menuOpened, setMenuOpened }) => {
+  const { t } = useTranslation(["menu"]);
   return (
     <>
       <button
@@ -29,12 +32,14 @@ const Menu = ({ onSectionChange, menuOpened, setMenuOpened }) => {
           menuOpened ? "w-full md:w-80" : "w-0"
         }`}
       >
-        <div className="">Switch Languages</div>
+        <div className="">
+          <LanguageSwitch />
+        </div>
         <div className="flex-1 flex items-start justify-center flex-col gap-6 p-8">
-          <MenuButton label="About" onClick={() => onSectionChange(0)} />
-          <MenuButton label="Skills" onClick={() => onSectionChange(1)} />
-          <MenuButton label="Proyects" onClick={() => onSectionChange(2)} />
-          <MenuButton label="Contact" onClick={() => onSectionChange(3)} />
+          <MenuButton label={t("menu1")} onClick={() => onSectionChange(0)} />
+          <MenuButton label={t("menu2")} onClick={() => onSectionChange(1)} />
+          <MenuButton label={t("menu3")} onClick={() => onSectionChange(2)} />
+          <MenuButton label={t("menu4")} onClick={() => onSectionChange(3)} />
         </div>
         <div className="flex justify-center gap-6 mb-4">
           {socials.map((social, i) => (
