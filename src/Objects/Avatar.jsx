@@ -20,7 +20,7 @@ export function Avatar(props) {
     cursorFollow: false,
   });
 
-  if (animation === "Standing") {
+  if (animation === "Standing" && !isMobile) {
     cursorFollow = true;
   }
 
@@ -78,7 +78,7 @@ export function Avatar(props) {
     if (isMobile) {
       targetRotation =
         animation === "Nod" || animation === "Standing"
-          ? -Math.PI / 7
+          ? -Math.PI / 71
           : animation === "Sitting"
           ? -Math.PI
           : -0.2;

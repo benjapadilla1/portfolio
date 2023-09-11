@@ -12,7 +12,7 @@ export const Section = (props) => {
   return (
     <motion.section
       className={`h-screen w-screen p-8 max-w-screen-2xl mx-auto flex flex-col items-start ${
-        mobileTop ? "justify-start md:justify-center" : "justify-center"
+        mobileTop ? "justify-start lg:justify-center " : "justify-center"
       }`}
       initial={{
         opacity: 0,
@@ -46,14 +46,14 @@ const AboutSection = ({ setSection }) => {
   const { t } = useTranslation(["about"]);
   return (
     <Section mobileTop>
-      <div className="text-4xl md:text-6xl font-extrabold  mt-2 md:mt-0">
-        <h1 className="mb-2 md:mb-4"> {t("welcome")}</h1>
-        <span className="bg-blue-200 italic leading-10 md:leading-snug ">
+      <div className="text-4xl md:text-6xl font-extrabold mt-2 md:mt-0">
+        <h1 className="mb-2 lg:mb-4 md:mb-4"> {t("welcome")}</h1>
+        <span className="bg-blue-200 italic leading-10 lg:leading-10 md:leading-snug ">
           Benjamín Padilla
         </span>
       </div>
       <motion.span
-        className="px-1 text-4xl mt-1 md:mt-5 font-bold"
+        className="px-1 text-4xl mt-1 lg:mt-5 md:mt-5 font-bold"
         initial={{
           opacity: 0,
           y: 25,
@@ -88,7 +88,7 @@ const AboutSection = ({ setSection }) => {
         Web developer
       </motion.span>
       <motion.button
-        className="bg-indigo-600 text-white py-4 px-8 rounded-lg font-bold text-lg mt-2 md:mt-14"
+        className="bg-indigo-600 text-white py-4 px-8 rounded-lg font-bold text-lg mt-2 lg:mt-14 md:mt-14"
         onClick={() => setSection(3)}
         initial={{
           opacity: 0,

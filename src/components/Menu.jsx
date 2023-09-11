@@ -32,9 +32,7 @@ const Menu = ({ onSectionChange, menuOpened, setMenuOpened }) => {
           menuOpened ? "w-full md:w-80" : "w-0"
         }`}
       >
-        <div className="">
-          <LanguageSwitch />
-        </div>
+        <LanguageSwitch />
         <div className="flex-1 flex items-start justify-center flex-col gap-6 p-8">
           <MenuButton label={t("menu1")} onClick={() => onSectionChange(0)} />
           <MenuButton label={t("menu2")} onClick={() => onSectionChange(1)} />
