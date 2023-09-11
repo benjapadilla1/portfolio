@@ -87,7 +87,7 @@ export function Avatar(props) {
         animation === "Nod" || animation === "Standing"
           ? -Math.PI / 4
           : animation === "Sitting"
-          ? Math.PI / 0.82
+          ? Math.PI / 0.83
           : 0;
     }
 

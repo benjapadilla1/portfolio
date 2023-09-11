@@ -77,7 +77,7 @@ export const currentProjectAtom = atom(Math.floor(projects.length / 2));
 const Projects = () => {
   const { viewport } = useThree();
   const [currentProject] = useAtom(currentProjectAtom);
-  const isMobile = window.innerWidth < 768;
+  const isMobile = window.innerWidth < 840;
 
   return (
     <group
