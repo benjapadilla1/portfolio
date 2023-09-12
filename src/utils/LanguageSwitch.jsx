@@ -8,10 +8,18 @@ const LanguageSwitch = () => {
   return (
     <div className="flex gap-5 justify-center relative top-5">
       <button onClick={() => ChangeLanguage("en")}>
-        <img src={England} alt="England" className="w-14 h-14 rounded-lg" />
+        <img
+          src={England}
+          alt="England"
+          className="w-14 h-14 rounded-lg object-fill "
+        />
       </button>
       <button onClick={() => ChangeLanguage("es")}>
-        <img src={Spain} alt="Spain" className="w-14 h-14 rounded-lg" />
+        <img
+          src={Spain}
+          alt="Spain"
+          className="w-14 h-14 rounded-lg object-fill "
+        />
       </button>
     </div>
   );

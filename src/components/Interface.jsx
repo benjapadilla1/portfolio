@@ -146,7 +146,7 @@ const SkillsSection = () => {
         </div>
         <motion.div whileInView={"visible"}>
           <h2 className="text-3xl md:text-5xl font-bold mt-10">
-            {t("languages")}
+            {t("language")}
           </h2>
           <div className="mt-8 space-y-4">
             {languages.map((leng, i) => (
@@ -166,7 +166,7 @@ const SkillsSection = () => {
                     },
                   }}
                 >
-                  {leng.name}
+                  {t(`language${i}`)}
                 </motion.h3>
                 <motion.span
                   className="h-full"
@@ -181,7 +181,7 @@ const SkillsSection = () => {
                     },
                   }}
                 >
-                  {leng.proficiency}
+                  {t(`proficiency${i}`)}
                 </motion.span>
               </div>
             ))}

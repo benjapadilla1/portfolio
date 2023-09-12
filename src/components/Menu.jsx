@@ -28,12 +28,12 @@ const Menu = ({ onSectionChange, menuOpened, setMenuOpened }) => {
         />
       </button>
       <div
-        className={`z-10 fixed top-0 right-0 bottom-0 bg-white transition-all overflow-hidden flex flex-col ${
+        className={`z-10 fixed top-0 right-0 bottom-0 bg-white transition-all overflow-hidden  flex flex-col  ${
           menuOpened ? "w-full md:w-80" : "w-0"
         }`}
       >
         <LanguageSwitch />
-        <div className="flex-1 flex items-start justify-center flex-col gap-6 p-8">
+        <div className="flex-1 flex items-center justify-center flex-col gap-6 p-8">
           <MenuButton label={t("menu1")} onClick={() => onSectionChange(0)} />
           <MenuButton label={t("menu2")} onClick={() => onSectionChange(1)} />
           <MenuButton label={t("menu3")} onClick={() => onSectionChange(2)} />

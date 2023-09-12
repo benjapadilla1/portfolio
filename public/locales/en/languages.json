@@ -1,7 +1,10 @@
 {
   "skills": "Skills",
-  "languages": "Languages",
-  "english": "English",
-  "spanish": "Spanish",
-  "german": "German"
+  "language": "Languages",
+  "language0": "English",
+  "language1": "Spanish",
+  "language2": "German",
+  "proficiency0": "Fluent (C2)",
+  "proficiency1": "Native",
+  "proficiency2": "Proficient (C1)"
 }

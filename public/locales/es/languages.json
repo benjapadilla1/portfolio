@@ -1,7 +1,10 @@
 {
   "skills": "Habilidades",
-  "languages": "Lenguas",
-  "english": "Inglés",
-  "spanish": "Español",
-  "german": "Alemán"
+  "language": "Lenguas",
+  "language0": "Inglés",
+  "language1": "Español",
+  "language2": "Alemán",
+  "proficiency0": "Fluido (C2)",
+  "proficiency1": "Nativo",
+  "proficiency2": "Competente (C1)"
 }
