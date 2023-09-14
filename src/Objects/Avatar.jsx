@@ -14,7 +14,7 @@ export function Avatar(props) {
   const { animation } = props;
   const group = useRef();
 
-  const isMobile = window.innerWidth < 840;
+  const isMobile = window.innerWidth < 1603;
 
   let { cursorFollow } = useControls({
     cursorFollow: false,
@@ -109,7 +109,7 @@ export function Avatar(props) {
     return () => {
       actions[animation].reset().fadeOut(1);
     };
-  }, [animation, isMobile]);
+  }, [animation, isMobile, actions]);
 
   useFrame((state) => {
     if (cursorFollow) {
