@@ -68,7 +68,7 @@ const Project = (props) => {
         fontSize={0.1}
         position={[-0.8, -0.6, 0]}
       >
-        {i === 0 ? t("description1") : t("description2")}
+        {t(`description${i}`)}
       </Text>
     </group>
   );

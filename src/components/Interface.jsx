@@ -12,7 +12,7 @@ export const Section = (props) => {
   return (
     <motion.section
       className={`h-screen w-screen p-8 max-w-screen-2xl mx-auto flex flex-col items-start ${
-        mobileTop ? "justify-start lg:justify-center " : "justify-center"
+        mobileTop ? "justify-start md:justify-center" : "justify-center"
       }`}
       initial={{
         opacity: 0,
@@ -112,7 +112,7 @@ const AboutSection = ({ setSection }) => {
 const SkillsSection = () => {
   const { t } = useTranslation(["languages"]);
   return (
-    <Section>
+    <Section mobileTop>
       <motion.div whileInView={"visible"}>
         <h2 className="text-3xl md:text-5xl font-bold">{t("skills")}</h2>
         <div className="mt-8 space-y-4 grid grid-cols-3 items-center justify-center ">
