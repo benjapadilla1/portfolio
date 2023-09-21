@@ -208,7 +208,7 @@ const ProyectSection = () => {
         {t("projects")}
       </h2>
       <motion.div
-        className="flex w-full h-full gap-8 items-end justify-center"
+        className="flex w-full h-full gap-8 place-items-end md:items-end mt-36 md:mt-0 justify-center"
         initial={{
           opacity: 0,
           x: 50,
